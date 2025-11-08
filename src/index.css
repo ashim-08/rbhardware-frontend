@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base layer styles */
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900 font-sans;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Component layer styles */
+@layer components {
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-medium transition-all duration-200 border border-gray-200;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow duration-200;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200;
+  }
+
+  /* Search component specific styles */
+  .search-container {
+    @apply relative w-full;
+  }
+
+  .search-input-wrapper {
+    @apply relative flex items-center bg-white border-2 rounded-xl transition-all duration-200 ease-in-out;
+  }
+
+  .search-input-wrapper.active {
+    @apply border-primary-500 shadow-lg ring-4 ring-primary-100;
+  }
+
+  .search-input-wrapper.inactive {
+    @apply border-gray-200 hover:border-gray-300 shadow-sm;
+  }
+
+  .search-clear-btn {
+    @apply flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-gray-700 transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-1 active:scale-95;
+  }
+
+  .search-results-dropdown {
+    @apply absolute top-full left-0 right-0 z-50 bg-white border-2 border-t-0 border-gray-200 rounded-b-xl shadow-lg max-h-80 overflow-y-auto;
+  }
+
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+}
+
+/* Print styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .print-area,
+  .print-area * {
+    visibility: visible;
+  }
+
+  .print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Search results scrollbar */
+.search-results-dropdown::-webkit-scrollbar {
+  width: 4px;
+}
+
+.search-results-dropdown::-webkit-scrollbar-track {
+  background: #f9fafb;
+}
+
+.search-results-dropdown::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 2px;
+}
+
+.search-results-dropdown::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Loading animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+/* Touch-friendly improvements for mobile */
+@media (max-width: 768px) {
+  .search-clear-btn {
+    @apply w-8 h-8 min-w-[32px] min-h-[32px];
+  }
+  
+  .search-input-wrapper {
+    @apply min-h-[48px];
+  }
+}
+
+/* Focus visible improvements for accessibility */
+.search-input-wrapper:focus-within {
+  @apply ring-4 ring-primary-100 border-primary-500;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .search-input-wrapper {
+    @apply border-2 border-gray-900;
+  }
+  
+  .search-input-wrapper.active {
+    @apply border-blue-600 ring-blue-200;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .search-input-wrapper,
+  .search-clear-btn,
+  .search-results-dropdown {
+    @apply transition-none;
+  }
+}
