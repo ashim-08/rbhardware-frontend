@@ -112,9 +112,7 @@ const AdminLogin = () => {
               ← Back to Website
             </a>
           </div>
-        </form>
-
-       
+        </form>      
       </div>
     </div>
   );
